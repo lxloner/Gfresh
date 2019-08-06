@@ -1,24 +1,29 @@
 <template>
   <div class="goodstitles">
-    <div :class="scroll>0?'activetitle':'titletop'" >
-      <b class="fa fa-angle-left"></b>
+    <div :class="scroll > 0 ? 'titleactive' : 'titletop'">
+      <router-link to="/home" tag="li">
+        <b class="fa fa-angle-left"></b>
+      </router-link>
+
       <p>极鲜仓配</p>
       <p></p>
     </div>
 
     <div class="Topcon">
-        <div class="topCon">
-            <p class="fa fa-angle-left"></p>
+      <div class="topCon">
+        <router-link to="/home" tag="li">
+          <p class="fa fa-angle-left"></p>
+        </router-link>
+      </div>
+      <div class="Topbutton">
+        <div class="Topconleft">
+          <img src alt />
         </div>
-        <div class="Topbutton">
-      <div class="Topconleft">
-        <img src alt />
+        <div class="Toponright">
+          <h2>极鲜仓配</h2>
+          <b>一站式采购、仓储、配送服务商</b>
+        </div>
       </div>
-      <div class="Toponright">
-        <h2>极鲜仓配</h2>
-        <b>一站式采购、仓储、配送服务商</b>
-      </div>
-       </div>
     </div>
     <div :class="scroll>160?'btnactive':'titleBtn'" ref="titleBtnscroll">
       <span>商品分类</span>
@@ -26,19 +31,22 @@
       <span>排序</span>
     </div>
     <div class="Concent">
+     
       <div class="Con" v-for="(item,index) in titledata" :key="index">
-        <div class="zonelist">
+         <router-link to="/details" tag="li">
+             <div>
+          <div class="zonelist">
           <div class="zoneimg">
-            <img
-              :src="item.imgUrl"
-              alt
-            />
+            <img :src="item.imgUrl" alt />
             <div class="Now">{{item.sendDate}}</div>
             <div class="goodgoods">国内精品</div>
           </div>
           <div class="zonetitle">
             <div class="zonetitletop">
-              <p>{{item.name}}<span>({{item.cityName}})</span></p>
+              <p>
+                {{item.name}}
+                <span>({{item.cityName}})</span>
+              </p>
               <p>
                 已售:6555箱
                 <span>{{item.specName}}</span>
@@ -62,26 +70,30 @@
           <span>更多...</span>
         </div>
       </div>
+      
+      </router-link>
+   
+      
+      </div>
     </div>
   </div>
 </template>
 <script>
-import {goodstitles} from "api/home"
+import { goodstitles } from "api/home";
 export default {
   name: "goodstitle",
   data() {
     return {
       scroll: "",
-      titledata:""
+      titledata: ""
     };
   },
   async created() {
-      let data = await goodstitles();
-      this.titledata = data.data.quoteList;
+    let data = await goodstitles();
+    this.titledata = data.data.quoteList;
     //   console.log(this.titledata)
   },
-      
-  
+
   mounted() {
     window.addEventListener("scroll", this.scrollTop);
   },
@@ -89,13 +101,6 @@ export default {
     scrollTop() {
       this.scroll =
         document.documentElement.scrollTop || document.body.scrollTop;
-      //   console.log(this.scroll)
-      // if (this.scroll > 0) {
-      //   this.$refs.titlescrotp.style.opacity = "1";
-      // } else {
-      //   this.$refs.titlescrotp.style.opacity = "0";
-      // }
-
     }
   }
 };
@@ -105,7 +110,7 @@ export default {
   height: 100%;
   position: relative;
 }
-.activetitle{
+.titleactive {
   width: 100%;
   height: 0.5rem;
   display: flex;
@@ -137,6 +142,10 @@ export default {
   z-index: 1;
   opacity: 0;
 }
+.titleactive b {
+  font-size: 22px;
+  padding-top: 0.15rem;
+}
 .titletop b {
   font-size: 22px;
   padding-top: 0.15rem;
@@ -144,16 +153,15 @@ export default {
 .Topcon {
   height: 1.7rem;
   font-size: 16px;
- 
 }
-.Topcon p{
-    font-size:22px;
-    padding:0.15rem;
+.Topcon p {
+  font-size: 22px;
+  padding: 0.15rem;
 }
-.Topbutton{
-    /* padding:1rem; */
+.Topbutton {
+  /* padding:1rem; */
   display: flex;
-padding: 0.5rem 0.2rem;
+  padding: 0.5rem 0.2rem;
 }
 .Toponright h2 {
   font-size: 22px;
@@ -251,27 +259,27 @@ padding: 0.5rem 0.2rem;
   position: absolute;
   top: 0.9rem;
   left: 0;
-  background:#fff;
+  background: #fff;
 }
 .Conlists {
   width: 100%;
 }
-.titleselect{
-    width:100%;
-    font-size:16px;
+.titleselect {
+  width: 100%;
+  font-size: 16px;
 }
-.titleselect p{
-    padding:0.1rem;
+.titleselect p {
+  padding: 0.1rem;
 }
-.titleselect span{
-    padding:0.05rem 0.1rem;
-    border:1px solid #ccc;
-    border-radius: 0.16rem;
-    margin-left:0.1rem;
-    font-size:12px;
+.titleselect span {
+  padding: 0.05rem 0.1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.16rem;
+  margin-left: 0.1rem;
+  font-size: 12px;
 }
-.titleselect .spn{
-    background:#0072ff;
-    color:#fff;
+.titleselect .spn {
+  background: #0072ff;
+  color: #fff;
 }
 </style>

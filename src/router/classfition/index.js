@@ -2,5 +2,8 @@
 export default{
     path:"/classfition",
     component:()=>import("../../views/classfition"),
-    name:"classfition"
+    name:"classfition",
+    meta:{
+        tabflag:true
+    }
 }

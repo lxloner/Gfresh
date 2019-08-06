@@ -1,5 +1,8 @@
 export default{
     path:"/goodstitle",
     component:()=>import("../../components/goodtitle"),
-    name:"goodstitle"
+    name:"goodstitle",
+    meta:{
+        tabflag:false
+    }
 }

@@ -11,6 +11,8 @@ import Goodstitle from "./goodstitle"
 import Details from './details'
 import Reserve from './reserve'
 import Login from './login'
+import City from './city'
+
 
 Vue.use(Router)
 
@@ -35,5 +37,7 @@ export default new Router({
         Details,
         Reserve,
         Login,
+        City
     ]
+
 })

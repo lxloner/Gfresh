@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <Tabbtn/>
+    <Tabbtn v-if="$route.meta.tabflag"/>
   </div>
 </template>
 <script>
