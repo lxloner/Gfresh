@@ -1,13 +1,13 @@
 import Vue from "vue"
 import Vuex from "vuex"
-Vue.use(Vuex);
-const state = {}
-const actions = {}
-const mutations = {}
+
+Vue.use(Vuex)
+
+
+import Homepage from "./homepage"
 
 export default new Vuex.Store({
-    state,
-    actions,
-    mutations,
-    modules:{}
+    modules:{
+        Homepage
+    }
 })
