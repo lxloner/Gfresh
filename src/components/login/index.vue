@@ -47,6 +47,7 @@
                         // location.href="http://localhost:8080/home"
                         // let token = jwt.sign({username}, 'bk1910', { expiresIn: '1h' });
                         sessionStorage.setItem('token',"998564546121235649748686452");
+                        //修改bug，获取不到数据
                     }else{
                         console.log(isVali);
                     }
