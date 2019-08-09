@@ -14,3 +14,4 @@ export const details = ()=>http("get","/api/product/product/queryProductByCateId
 // {keyWord,type,productType,flag,arrivedDate,pageNumber,pageSize,cityId}
 // keyWord="a",type=1,productType=0,flag=1,arrivedDate='',pageNumber=1,pageSize=10,cityId="9c0c0fa5-aadc-4b5e-b247-1dc9500c2d92"
 // keyWord="%E8%9F%B9",type=1,productType=0,flag=1,arrivedDate='',pageNumber=1,pageSize=10,cityId="9c0c0fa5-aadc-4b5e-b247-1dc9500c2d92"
+export const Scrollingsign = () =>http("get","/api/product/news/getHomeNews")

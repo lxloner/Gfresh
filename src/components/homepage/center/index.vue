@@ -17,34 +17,34 @@
         <!-- </router-link> -->
       </div>
 
-        <!-- 通知信息 -->
-        <div class="notice">
-          <p class="p1">
-            <b>极鲜</b>
-            <br />
-            <span>公告</span>
-          </p>
-          <p>紧急！关于会员积分清零通知</p>
-          <p>
-            <b>更多</b>
-            <i class="fa fa-angle-right" style="font-size:20px;padding-left:5px;"></i>
-          </p>
-        </div>
-
-        <div class="homelist">
-          <div class="listNum" v-for="(item,index) in notice" :key="index">
-            <router-link to="/goodstitle" tag="p">
-              <div class="listimg">
-                <img :src="item.iconPath" alt />
-              </div>
-              <p>{{item.name}}</p>
-            </router-link>
-          </div>
-        </div>
-
-        <router-link to="/whitebar" class="Con">
-          <img src="https://m.gfresh.cn/static/img/bailing-in.ec962b7.png" alt />
+      <!-- 通知信息 -->
+      <div class="notice">
+        <router-link tag="p" to="/notice" class="p1">
+          <b>极鲜</b>
+          <br />
+          <span>公告</span>
+        </router-link >
+        <p>紧急！关于会员积分清零通知</p>
+        <router-link tag="p" to="/notice">
+          <b>更多</b>
+          <i class="fa fa-angle-right" style="font-size:20px;padding-left:5px;"></i>
         </router-link>
+      </div>
+  
+      <div class="homelist">
+        <div class="listNum" v-for="(item,index) in notice" :key="index">
+           <router-link to="/goodstitle" tag="p">
+               <div class="listimg">
+                  <img :src="item.iconPath" alt/>
+                </div>
+                <p>{{item.name}}</p>
+           </router-link>
+        </div>
+      </div>
+              
+      <router-link to="/whitebar" class="Con">
+        <img src="https://m.gfresh.cn/static/img/bailing-in.ec962b7.png" alt />
+      </router-link>
 
       <div class="goods">
         <div class="goodslist" v-for="(item,index) in goodslist" :key="index">
@@ -58,7 +58,6 @@
                 <b class="fa fa-angle-right" style="font-size:20px;padding-left:5px;"></b>
               </p>
             </div>
-
             <!-- <Bscrollcommon> -->
             <div class="showgoodslist">
               <div class="goodsshow" v-for="(list,index) in item.products">
@@ -83,6 +82,10 @@
           </div>
           <!-- </router-link> -->
         </div>
+
+
+
+
         <div class="goodslist">
           <div class="goodstitle">
             <p class="plist">猜你喜欢</p>
@@ -108,7 +111,10 @@
             </div>
           </div>
         </div>
+
+
       </div>
+
       <div class="zone">
         <div class="zonegoods" v-for="(item,index) in goodszone" :key="index">
           <div class="zonetop">
@@ -155,9 +161,8 @@
           </v-touch>
         </div>
       </div>
-      <div class="homelast"></div>
-
     </div>
+    <div class="homelast"></div>
   </div>
 </template>
 <script>
@@ -172,7 +177,8 @@ import {
   homelike,
   homezone,
   homezoneOne,
-  details
+  details,
+  Scrollingsign
 } from "../../../api/home.js";
 export default {
   data() {
@@ -182,7 +188,8 @@ export default {
       goodslist: "",
       goodslike: "",
       goodszone: "",
-      looklist: ""
+      looklist: "",
+      ScrollingsignNav:""
     };
   },
   computed: {
@@ -232,7 +239,6 @@ export default {
       console.log(listid,listcity)
        this.$router.push({name:"detailsroute",params:{id:listid,cityId:listcity}})
     },
-     
   },
   watch: {
     banner() {
