@@ -1,17 +1,19 @@
 <template>
-    <div class="wrapper">
-        <slot name="scroll"></slot>
+    <div class="show" ref="showBetscroll">
+        <slot></slot>
     </div>
 </template>
-
 <script>
-    export default {
-        name: "scroll",
-    }
+import Bscroll from "better-scroll"
+export default {
+    name:"Bscrollcommon",
+    mounted() {
+        new Bscroll(this.$refs.showBetscroll)
+    },
+}
 </script>
-
 <style>
-    .wrapper{
-      height:100%;
+    .show{
+        height:100%;
     }
 </style>

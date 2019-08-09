@@ -27,7 +27,12 @@
     </div>
 </template>
 <script>
-    export default {}
+import Shcar from "../../components/shoppingcar"
+export default {
+    components:{
+        Shcar
+    }
+}
 </script>
 <style>
     .g-header {

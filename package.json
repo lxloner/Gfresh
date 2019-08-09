@@ -44,5 +44,14 @@
   "description": "## Project setup ``` yarn install ```",
   "main": "babel.config.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lxloner/Gfresh.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/lxloner/Gfresh/issues"
+  },
+  "homepage": "https://github.com/lxloner/Gfresh#readme"
 }
