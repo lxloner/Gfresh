@@ -15,6 +15,8 @@ import Login from './login'
 import Record from './record'
 import City from './city'
 import whiteBar from './whiteBar'
+import ProductDetails from './ProductDetails'
+import notice from "./notice"
 Vue.use(Router)
 
 export default new Router({
@@ -43,7 +45,9 @@ export default new Router({
         City,
         whiteBar,
         Deposit,
-        Record
+        Record,
+        ProductDetails,
+        notice
     ]
 
 })

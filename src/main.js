@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Vuetouch from 'vue-touch'
 import router from './router/index.js'
 import store from './store/index.js'
 import "./common/index"

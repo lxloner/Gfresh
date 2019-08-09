@@ -14,5 +14,7 @@ export default {
 </script>
 <style>
 @import "./public/css/common.css";
-
+  #app{
+    width:100%
+  }
 </style>
