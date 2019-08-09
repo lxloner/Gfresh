@@ -157,8 +157,8 @@
       </div>
       <div class="homelast"></div>
 
+    </div>
   </div>
-  <!-- </Bscrollcommon> -->
 </template>
 <script>
 import Swiper from "swiper";
