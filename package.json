@@ -12,6 +12,7 @@
     "swiper": "^4.5.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "vue-touch": "^2.0.0-beta.4",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -33,5 +34,13 @@
   "description": "## Project setup ``` yarn install ```",
   "main": "babel.config.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lxloner/Gfresh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lxloner/Gfresh/issues"
+  },
+  "homepage": "https://github.com/lxloner/Gfresh#readme"
 }

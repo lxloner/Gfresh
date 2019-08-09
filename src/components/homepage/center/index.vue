@@ -19,16 +19,16 @@
 
       <!-- 通知信息 -->
       <div class="notice">
-        <p class="p1">
+        <router-link tag="p" to="/notice" class="p1">
           <b>极鲜</b>
           <br />
           <span>公告</span>
-        </p>
+        </router-link >
         <p>紧急！关于会员积分清零通知</p>
-        <p>
+        <router-link tag="p" to="/notice">
           <b>更多</b>
           <i class="fa fa-angle-right" style="font-size:20px;padding-left:5px;"></i>
-        </p>
+        </router-link>
       </div>
   
       <div class="homelist">
@@ -61,7 +61,7 @@
             </p>
           </div>
           <div class="showgoodslist">
-            <div class="goodsshow" v-for="(list,index) in item.products">
+            <div class="goodsshow" v-for="(list,index) in item.products" :key="index">
               <div class="showlist">
                 <div class="showim">
                   <img
@@ -159,7 +159,7 @@
 <script>
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.css";
-import {homebanner,homenotice,homegoodslist,homelike,homezone,homezoneOne} from "../../../api/home.js";
+import {homebanner,homenotice,homegoodslist,homelike,homezone,homezoneOne,Scrollingsign} from "../../../api/home.js";
 export default {
   data() {
     return {
@@ -168,6 +168,7 @@ export default {
       goodslist:"",
       goodslike:"",
       goodszone:"",
+      ScrollingsignNav:""
     };
   },
   async created() {
@@ -182,9 +183,12 @@ export default {
     let zonedata = await homezone();
     this.goodszone = zonedata.data;
     // console.log(this.goodszone);
-    let zoneone = await homezoneOne()
+    let zoneone = await homezoneOne();
     // console.log(zoneone)
-
+    let ScrollingsignNav = await Scrollingsign();
+    this.ScrollingsignNav = ScrollingsignNav.data;
+    console.log(this.ScrollingsignNav)
+   
    
     
     // console.log(this.goodslist)
