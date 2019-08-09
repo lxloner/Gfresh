@@ -8,12 +8,12 @@
                     <h2>个人设置</h2>
                 </li>
             </ul>
-            <div class="deposit headBox">
-                <i class="nicon-getMoney"></i>
-                <span>提现</span>
-            </div>
+            <v-touch @tap="handleclicks()" tag="div" class="deposit headBox">
+                <i class="fa fa-money"></i>
+                <span >提现</span>
+            </v-touch>
             <div class="recharge headBox">
-                <i class="nicon-sendMoney"></i>
+                <i class="fa fa-ravelry"></i>
                 <span>充值</span>
                 <em>专属号极速充值</em>
             </div>
@@ -87,13 +87,18 @@
                 <p>发票管理</p>
                 <div class="user_cell_ft"></div>
             </div>
-
         </div>
-
     </div>
 </template>
 <script>
-    export default {}
+    export default {
+        name:"deposit",
+        methods:{
+            handleclicks(){
+                this.$router.push("/deposit")
+            }
+        }
+    }
 </script>
 <style scoped>
     .mine{

@@ -5,6 +5,7 @@ export default{
 
     name:"shoppingcar",
     meta:{
-        tabflag:true
+        tabflag:true,
+        isAuthorization:true
     }
 }

@@ -1,2 +1,3 @@
-// import Betscroll from "../lib/betscroll"
-// Vue.component(Betscroll.name,Betscroll)
+import scroll from "lib/betscroll"
+import Vue from "vue"
+Vue.component(scroll.name,scroll)

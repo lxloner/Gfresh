@@ -2,12 +2,18 @@ export default {
     path:"/reserve",
     component:()=>import("views/reserve"),
     name:"reserve",
+    meta:{
+        tabflag:true,
+        isAuthorization:true
+    },
     children:[
         {
             path:"reservation",
             component:()=>import("components/reservation"),
             name:"reservation",
-
+            meta:{
+                tabflag:false
+            }
         }
     ]
 }

@@ -3,6 +3,7 @@ export default{
     component:()=>import("components/details"),
     name:"details",
     meta:{
-        tabflag:false
+        tabflag:false,
+        isAuthorization:false
     }
 }

@@ -1,9 +1,9 @@
 export default{
     path:"/mine",
     component:()=>import("../../views/mine"),
-
     name:"mine",
     meta:{
-        tabflag:true
+        tabflag:true,
+        isAuthorization:true
     }
 }

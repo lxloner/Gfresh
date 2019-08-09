@@ -3,6 +3,7 @@ export default{
     component:()=>import("../../components/goodtitle"),
     name:"goodstitle",
     meta:{
-        tabflag:false
+        tabflag:false,
+        isAuthorization:false
     }
 }

@@ -1,5 +1,27 @@
 export default {
     path:"/login",
     component:()=>import("views/login"),
-    name:"login"
+    name:"login",
+    meta:{
+        isAuthorization:false
+    },
+    redirect:"/login/loging",
+    children:[
+        {
+            path:"loging",
+            component:()=>import("components/login/index"),
+            name:"loging",
+            meta:{
+                isAuthorization:false
+            },
+        },
+        {
+            path:"packlogin",
+            component:()=>import("components/login/packlogin"),
+            name:"packlogin",
+            meta:{
+                isAuthorization:false
+            },
+        }
+    ]
 }

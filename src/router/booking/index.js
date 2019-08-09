@@ -4,6 +4,7 @@ export default{
     component:()=>import("../../views/booking"),
     name:"booking",
     meta:{
-        tabflag:true
+        tabflag:true,
+        isAuthorization:false
     }
 }

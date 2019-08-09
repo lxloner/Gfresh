@@ -4,6 +4,7 @@ export default{
     component:()=>import("../../views/classfition"),
     name:"classfition",
     meta:{
-        tabflag:true
+        tabflag:true,
+        isAuthorization:false
     }
 }

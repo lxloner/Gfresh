@@ -12,7 +12,7 @@ server.interceptors.request.use((config)=>{
     if(config.method.toUpperCase() == "GET"){
         // config.params = {...config.data}
     }else if(config.method.toUpperCase() == "POST"){
-        config.headers["content-type"] = "appliaction/x-www-form-urlencoded";
+        config.headers["content-type"] = "application/json;charset=UTF-8";
         //config.data = qs.stringify(config.data)
     }
 

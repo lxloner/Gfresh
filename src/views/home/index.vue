@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <Top/>
-    <Center/> 
+    <senter></senter>
     <Tabbtn/>
   </div>
 </template>
 <script>
 import Top from "../../components/homepage/top"
-import Center from "../../components/homepage/center"
+import senter from "../../components/homepage/center"
 import Tabbtn from "../../tabBar"
 export default {
   components:{
     Top,
-    Center,
+    senter,
     Tabbtn
   }
 }

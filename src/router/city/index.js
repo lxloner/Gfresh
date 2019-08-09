@@ -3,6 +3,7 @@ export default{
     name:"city",
     component:()=>import("components/city"),
     meta:{
-        tabflag:false
+        tabflag:false,
+        isAuthorization:false
     }
 }

@@ -18,10 +18,24 @@ module.exports = {
                 // "common":path.join(__dirname,"./src/common"),
                 "utils":path.join(__dirname,"./src/utils"),
                 "router":path.join(__dirname,"./src/router"),
-                "store":path.join(__dirname,"./src/store")
+                "store":path.join(__dirname,"./src/store"),
+                "lib":path.join(__dirname,"./src/lib")
             }
         }
     }
 }
 
+
+//package.json
+// {
+//     "name": "api",
+//     "version": "1.0.0",
+//     "description": "",
+//     "main": "index.js",
+//     "scripts": {
+//     "test": "echo \"Error: no test specified\" && exit 1"
+// },
+//     "author": "",
+//     "license": "ISC"
+// }
 

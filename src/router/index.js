@@ -7,13 +7,14 @@ import Classfition from "./classfition"
 import Booking from "./booking"
 import Shoppingcar from "./shoppingcar"
 import Mine from "./mine"
+import Deposit from "./deposit"
 import Goodstitle from "./goodstitle"
 import Details from './details'
 import Reserve from './reserve'
 import Login from './login'
+import Record from './record'
 import City from './city'
-
-
+import whiteBar from './whiteBar'
 Vue.use(Router)
 
 export default new Router({
@@ -21,12 +22,14 @@ export default new Router({
         {
             path: "/",
             component: Home,
-            name: "home"
+            name: "home",
+            props:true
         },
         {
             path: "/home",
             component: Home,
-            name: "home"
+            name: "home",
+            props:true
         },
         Search,
         Classfition,
@@ -37,7 +40,10 @@ export default new Router({
         Details,
         Reserve,
         Login,
-        City
+        City,
+        whiteBar,
+        Deposit,
+        Record
     ]
 
 })
