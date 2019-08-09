@@ -10,7 +10,7 @@
     <div class="deimgtop">
       <div class="deimg">
         <img
-          src="https://file.gfresh.cn/product/2016/0253c308-a51f-4c7f-b13a-0e6b73d52bc9/4ca32455-bda2-4c75-befb-4955c5cbff54/32910304.jpg"
+         :src="likedetails.product.imgUrls[0]"
           alt
         />
       </div>
@@ -22,17 +22,20 @@
       <p class="nump">1</p>
     </div>
     <div class="detxt">
-      <h2>极鲜仓配 中国 国产鲍鱼 养殖（上海市发货）</h2>
+      <h2>{{likedetails.product.name}}  
+        (<span>{{likedetails.arrivedList[0].packList[0].skuList[0].cityName}}</span>
+        <span>{{likedetails.arrivedList[0].date}}</span>)
+        </h2>
       <div class="deCon">
         <p>
-          <span>￥40.00</span>
-          <b>/500克</b>
+          <span>￥{{likedetails.arrivedList[0].packList[0].skuList[0].quoteUnitPrice[0].price}}</span>
+          <b>/{{likedetails.arrivedList[0].packList[0].skuList[0].quoteUnitPrice[0].unitName}}</b>
         </p>
-        <p class="txtp">￥400.00/箱</p>
+        <p class="txtp">￥{{likedetails.arrivedList[0].packList[0].skuList[0].quotePrice.salePrice}}/箱</p>
       </div>
       <div class="detxtimg">
         <img
-          src="https://file.gfresh.cn/shop/2016/4ca32455-bda2-4c75-befb-4955c5cbff54/1510191374987_9947.png"
+          :src="likedetails.brand.logo"
           alt
         />
       </div>
@@ -40,18 +43,18 @@
     <div class="deprompt">
       <p>温馨提示：【纯咸水】【当天下单，隔日送达】订桌，时间等需求请提前备注，【到店包活，死亡赔偿50%】</p>
       <p>
-        <span>免责条款：订单有特殊需求、需要自提或发物流车，请联系客服热线:400-628-1818，客服微信号：JXWKF01</span>
+        <span>订单有特殊需求、需要自提或发物流车，请联系客服热线:400-628-1818，客服微信号：JXWKF01</span>
       </p>
       <p>
         <span>极鲜网提供验货服务</span>
       </p>
     </div>
     <div class="denumber">
-      <p>总销量：</p>
-      <p>起发量：</p>
+      <p>总销量：{{likedetails.product.productStatistics.boxNum}}箱</p>
+      <p>起发量：10箱</p>
       <p>
         到港日期：
-        <span>现货</span>
+        <span>{{likedetails.arrivedList[0].date}}</span>
       </p>
       <p>
         包装规格：
@@ -61,11 +64,7 @@
         <p>产品规格：</p>
         <div class="numspn">
           <div class="denumspan">
-            <b>咸水-18头</b>
-            <b>咸水-18头</b>
-            <b>咸水-18头</b>
-            <b>咸水-18头</b>
-            <b>咸水-18头</b>
+            <b>{{likedetails.arrivedList[0].packList[0].skuList[0].values[0].vale}}</b>
           </div>
         </div>
       </div>
@@ -73,17 +72,9 @@
     <div class="desee">
       <div class="deseetop">
         <p class="seep">产品说明</p>
-        <p>
-          原产地：
-          <span>中国</span>
-        </p>
-        <p>
-          捕捞方式：
-          <span>养殖</span>
-        </p>
-        <p>
-          发展设置：
-          <span>提供增值税发票</span>
+        <p v-for="(item,index) in likedetails.product.dynamicProperties">
+         {{item.name}}：
+          <span>{{item.propertieValue.value}}</span>
         </p>
         <p>
           退换货提示：
@@ -155,9 +146,9 @@
           </p>
         </div>
         <div class="DefootR">
-          <p>-</p>
-          <span>1</span>
-          <p>+</p>
+          <v-touch tag="p" @tap="haddlesubtraction()">-</v-touch>
+          <span>{{Num}}</span>
+          <v-touch tag="p" @tap="haddleadd()">+</v-touch>
         </div>
       </div>
       <div class="DefootB">
@@ -167,7 +158,7 @@
           <span class="fa fa-shopping-cart" style="font-size:25px;"></span>
         </p>
         <div class="DefootBR">
-          <p>加入购物车</p>
+          <v-touch tag="p" @tap="haddletoshopcar(likedetails)">加入购物车</v-touch>
           <p class="DeBrp">立刻购买</p>
         </div>
       </div>
@@ -175,21 +166,53 @@
   </div>
 </template>
 <script>
+import {detailsmMsg,detailstitle,detailsxinxi} from "../../api/details"
+import {searchlistapi} from "../../api/search"
+import {mapState,mapMutations } from "vuex"
 export default {
+  name:"detailsroute",
+  props:["id","cityId"],
+
+  async created() {
+    let detailsdata = await detailsmMsg(this.id);
+     this.datanumber = detailsdata.data;
+     let fign = await detailsxinxi(this.id,this.cityId)
+    this.likedetails = fign.data
+
+  },
   data() {
     return {
-      scroll: ""
+      scroll: "",
+      datanumber:"",
+      likedetails:''
     };
   },
   mounted() {
     window.addEventListener("scroll", this.scrollTop);
+  },
+  computed: {
+    ...mapState({
+      Num:state=>state.Details.num,
+     
+    })
   },
   methods: {
     scrollTop() {
       this.scroll =
         document.documentElement.scrollTop || document.body.scrollTop;
         // console.log(this.scroll)
-    }
+    },
+    ...mapMutations({
+         haddlesubtraction:"Details/haddleSubMut",
+         haddleadd:"Details/haddleaddMut"
+    }),
+    ...mapMutations({
+         haddletoshopcar:"Shopcar/haddletoshopcarMut"
+    })
+    // haddletoshopcar(){
+    //     sessionStorage.setItem("shopdata",JSON.stringify( this.likedetails))
+    //     // console.log(111)
+    // }
   }
 };
 </script>

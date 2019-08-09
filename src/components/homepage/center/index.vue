@@ -1,19 +1,20 @@
 <template>
+  <!-- <Bscrollcommon> -->
   <div class="Cent">
     <div class="Center">
       <!-- 轮播 -->
       <div class="banner">
-        <router-link to="/details">
+        <!-- <router-link to="/details"> -->
           <div class="swiper-container" ref="swiperContainer">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(item,index) in banner" :key="index">
-                <img :src="item.pcfilePath" alt />
-              </div>
+            <div class="swiper-wrapper" >
+              <v-touch class="swiper-slide"  v-for="(item,index) in banner" :key="index"  @tap="haddlebanner(item.pcurl)">
+                <img :src="item.pcfilePath" alt/>
+              </v-touch>
             </div>
             <!-- 如果需要分页器 -->
             <div class="swiper-pagination"></div>
           </div>
-        </router-link>
+        <!-- </router-link> -->
       </div>
 
       <!-- 通知信息 -->
@@ -47,37 +48,40 @@
 
       <div class="goods">
         <div class="goodslist" v-for="(item,index) in goodslist" :key="index">
-          <router-link to="/details" tag="li">
-            <div>
-              <div class="goodstitle">
-                <p class="plist">{{item.actName}}</p>
-                <p></p>
-                <p>
-                  <span>更多</span>
-                  <b class="fa fa-angle-right" style="font-size:20px;padding-left:5px;"></b>
-                </p>
-              </div>
-              <div class="showgoodslist"  ref="goodsscroll">
-                <div class="goodsshow" v-for="(list,index) in item.products">
-                  <div class="showlist">
-                    <div class="showim">
-                      <img :src="list.imgUrl" alt />
-                    </div>
-                    <p>
-                      {{list.name}}
-                      <span>({{list.cityName}})</span>
-                    </p>
-                    <p>
-                      <span style="font-weight: bolder;">￥{{list.unitPrice}}</span>
-                      <b>/{{list.unitName}}</b>
-                    </p>
-                    <div class="Now">{{list.sendDate}}</div>
-                    <div class="goodgoods">国内精品</div>
+          <!-- <router-link to="/details" tag="li"> -->
+          <div>
+            <div class="goodstitle">
+              <p class="plist">{{item.actName}}</p>
+              <p></p>
+              <p>
+                <span>更多</span>
+                <b class="fa fa-angle-right" style="font-size:20px;padding-left:5px;"></b>
+              </p>
+            </div>
+
+            <!-- <Bscrollcommon> -->
+            <div class="showgoodslist">
+              <div class="goodsshow" v-for="(list,index) in item.products">
+                <v-touch tag="div" class="showlist" @tap="haddleDetails(list.productId,list.cityId)">
+                  <div class="showim">
+                    <img :src="list.imgUrl" alt />
                   </div>
-                </div>
+                  <p>
+                    {{list.name}}
+                    <span>({{list.cityName}})</span>
+                  </p>
+                  <p>
+                    <span style="font-weight: bolder;">￥{{list.unitPrice}}</span>
+                    <b>/{{list.unitName}}</b>
+                  </p>
+                  <div class="Now">{{list.sendDate}}</div>
+                  <div class="goodgoods">国内精品</div>
+                </v-touch>
               </div>
             </div>
-          </router-link>
+            <!-- </Bscrollcommon> -->
+          </div>
+          <!-- </router-link> -->
         </div>
         <div class="goodslist">
           <div class="goodstitle">
@@ -86,23 +90,21 @@
           </div>
           <div class="showgoodslist">
             <div class="goodsshow" v-for="(like,index) in goodslike" :key="index">
-              <router-link to="/details" tag="li">
-                <div class="showlist">
-                  <div class="showim">
-                    <img :src="like.imgUrl" alt />
-                  </div>
-                  <p>
-                    {{like.name}}
-                    <span>({{like.cityName}})</span>
-                  </p>
-                  <p>
-                    <span style="font-weight: bolder;">￥{{like.unitPrice}}</span>
-                    <b>/{{like.unitName}}</b>
-                  </p>
-                  <div class="Now">{{like.sendDate}}</div>
-                  <div class="goodgoods">海外原包</div>
+              <v-touch tag="div" @tap="haddleshowlike(like.productId,like.cityId)" class="showlist">
+                <div class="showim">
+                  <img :src="like.imgUrl" alt />
                 </div>
-              </router-link>
+                <p>
+                  {{like.name}}
+                  <span>({{like.cityName}})</span>
+                </p>
+                <p>
+                  <span style="font-weight: bolder;">￥{{like.unitPrice}}</span>
+                  <b>/{{like.unitName}}</b>
+                </p>
+                <div class="Now">{{like.sendDate}}</div>
+                <div class="goodgoods">海外原包</div>
+              </v-touch>
             </div>
           </div>
         </div>
@@ -117,8 +119,13 @@
               <b class="fa fa-angle-right" style="font-size:20px;padding-left:5px;"></b>
             </p>
           </div>
-          <div class="zonelist">
-            <div class="zoneimg">
+          <v-touch
+            class="zonelist"
+            tag="div" 
+            @tap="haddleallBtn()"
+            v-for="(last,index) in item.categoryVos"
+            :key="index">
+            <div class="zoneimg" >
               <img
                 src="https://file.gfresh.cn/product/2016/137/4ca32455-bda2-4c75-befb-4955c5cbff54/5173766.jpg?x-oss-process=image/resize,m_fixed,h_200,w_200"
                 alt
@@ -145,26 +152,28 @@
                 </p>
               </div>
             </div>
-          </div>
+          </v-touch>
         </div>
       </div>
     </div>
     <div class="homelast"></div>
   </div>
+  <!-- </Bscrollcommon> -->
 </template>
 <script>
-import Bscroll from "better-scroll"
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.css";
+import Bscroll from "better-scroll";
+import {mapMutations, mapState} from 'vuex'
 import {
   homebanner,
   homenotice,
   homegoodslist,
   homelike,
   homezone,
-  homezoneOne
+  homezoneOne,
+  details
 } from "../../../api/home.js";
-import {detailsmMsg} from "../../../api/details.js"
 export default {
   data() {
     return {
@@ -172,14 +181,17 @@ export default {
       notice: "",
       goodslist: "",
       goodslike: "",
-      goodszone: ""
+      goodszone: "",
+      looklist: ""
     };
   },
-  mounted(){
-    // new Bscroll(this.$refs.goodsscroll)
-    // console.log(this.$refs)
+  computed: {
+    ...mapState({
+       cityId:state=>state.City.cityId
+    })
   },
   async created() {
+    // console.log(this.cityId)
     let data = await homebanner();
     this.banner = data.data.content;
     let noticedata = await homenotice();
@@ -188,18 +200,39 @@ export default {
     this.goodslist = goods.data;
     let likedata = await homelike();
     this.goodslike = likedata.data.quoteList;
+    // console.log( this.goodslike)
     let zonedata = await homezone();
     this.goodszone = zonedata.data;
     let zoneone = await homezoneOne();
-    // console.log(zoneone)
-    let detail = await detailsmMsg();
-    console.log(detail)
+    let detail = await details();
+  
+  },
+ 
+  methods: {
+    ...mapMutations({
+         haddlebanner:"Homepage/haddleBanMut"
+    }),
 
-
-
-    // console.log(this.goodslist)
-    // this.goodslistproduct = goods.data.products;
-    // console.log(this.goodslistproduct);
+    haddlebanner(url){
+        var str = url;
+        var arr = [];
+        arr = str.split("?");
+        str = arr[1];
+        arr = str.split("&");
+        arr.pop();
+        arr = arr[1].split("=");
+        console.log(arr[1])
+        this.$router.push({name:"detailsroute",params:{id:arr[1],cityId:this.cityId}})
+    },
+    haddleshowlike(likeid,likecity){
+         console.log(likeid,likecity)
+        this.$router.push({name:"detailsroute",params:{id:likeid,cityId:likecity}})
+    },
+    haddleDetails(listid,listcity){
+      console.log(listid,listcity)
+       this.$router.push({name:"detailsroute",params:{id:listid,cityId:listcity}})
+    },
+     
   },
   watch: {
     banner() {
@@ -305,7 +338,7 @@ export default {
 }
 .showgoodslist {
   display: flex;
-
+  width: 100%;
   overflow: auto;
 }
 .goodsshow {

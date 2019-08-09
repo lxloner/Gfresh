@@ -1,8 +1,9 @@
 export default{
-    path:"/details",
+    path:"/detailsroute/id=:id/cityId=:cityId",
     component:()=>import("components/details"),
-    name:"details",
+    name:"detailsroute",
     meta:{
         tabflag:false
-    }
+    },
+    props:true
 }

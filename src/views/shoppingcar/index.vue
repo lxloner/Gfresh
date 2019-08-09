@@ -1,11 +1,14 @@
 <template>
     <div>
-        购物车
+        <!-- <Shcar/> -->
     </div>
 </template>
 <script>
+import Shcar from "../../components/shoppingcar"
 export default {
-    
+    components:{
+        Shcar
+    }
 }
 </script>
 <style >

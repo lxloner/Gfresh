@@ -4,7 +4,7 @@
       <router-link to="/city" tag="li">
         <p>
           <b class="iconfont icon-dingwei"></b>
-          <span>上海</span>
+          <span>{{cityName}}</span>
         </p>
       </router-link>
 
@@ -25,7 +25,20 @@
 </template>
 <script>
 import "../../../public/btn/iconfont.css";
-export default {};
+import {mapState} from 'vuex'
+export default {
+created() {
+  // console.log(this.$store.state.City.cityName)
+},
+  computed: {
+    ...mapState({
+      cityName:state=>state.City.cityName,
+      citylistId:state=>state.City.cityId,
+     
+    })
+  },
+
+};
 </script>
 <style>
 .top {

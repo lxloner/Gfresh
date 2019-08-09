@@ -13,7 +13,7 @@ server.interceptors.request.use((config)=>{
         // config.params = {...config.data}
     }else if(config.method.toUpperCase() == "POST"){
         config.headers["content-type"] = "appliaction/x-www-form-urlencoded";
-        //config.data = qs.stringify(config.data)
+        // config.data = qs.stringify(config.data)
     }
 
     return config;

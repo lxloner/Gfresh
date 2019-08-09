@@ -4,6 +4,6 @@ export default{
     component:()=>import("../../views/shoppingcar"),
     name:"shoppingcar",
     meta:{
-        tabflag:true
+        tabflag:false
     }
 }
